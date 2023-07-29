@@ -64,3 +64,46 @@ console.log(arr2.join('-')); // horse-pig-cow-chicken -> '-'을 기준으로 병
 // 메서드 체이닝: 메서드 연결가능
 console.log('hello'.split('').reverse()); // o,l,l,e,h
 console.log('hello'.split('').reverse().join('')); // olleh
+
+//////////////////////////
+// 배열에서의 for/forEach
+
+const arr3 = [1, 2, 5, 6, 7];
+const alphabets = ['a', 'b', 'c', 'd'];
+
+for (let a = 2; a < alphabets.length; a++) {
+  console.log(arr3[a]);
+} // 5, 6 -> alphabets 배열의 길이까지 arr3의 요소 2번째 'a'부터 하나씩 키우면서 반복
+
+for (let alpha of alphabets) {
+  console.log(alpha);
+} // for of 사용 -> a, b, c, d
+
+alphabets.forEach(function (alpha) {
+  console.log(alpha);
+}); // forEach(function('a')) 사용 'a'는 현재 반복되는 요소
+
+alphabets.forEach((alpha, index, array) => {
+  console.log(alpha, index, array);
+}); // => 함수 사용 / alpha: 현재 반복되는 요소, index: 현재요소의 위치, array: 호출 배열
+
+let numbers = [1, 2, 3, 4, 5, 6];
+var sum1 = 0;
+var sum2 = 0;
+var sum3 = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  sum1 = sum1 + numbers[i];
+  console.log(numbers[i], sum1);
+}
+
+for (let num of numbers) {
+  sum2 = sum2 + num;
+}
+console.log(sum2);
+
+numbers.forEach((num) => {
+  sum3 = sum3 + num;
+});
+
+console.log(sum1, sum2, sum3);
