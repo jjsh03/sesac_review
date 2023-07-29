@@ -107,3 +107,11 @@ numbers.forEach((num) => {
 });
 
 console.log(sum1, sum2, sum3);
+
+//for in 반복문: 객체의 key 반복
+const me = { name: 'sage', gender: 'f', hobby: 'book' };
+for (let key in me) {
+  console.log(key, me[key]);
+  // key: key
+  // value: me[key]
+} // name sage / gender f / hobby book
