@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js-guest book</title>
+    <style>
+      table * {
+        border: 1px solid black;
+        padding: 5px;
+      }
+      table {
+        width: 500px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>방명록</h1>
+    <label for="username">작성자</label>
+    <input type="text" id="username" /> <br />
+    <label for="content">내용</label>
+    <input type="text" id="content" /><br />
+    <button type="submit" id="submit">작성</button>
+    <hr />
+
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>작성자</th>
+        <th>내용</th>
+        <th>작성일</th>
+      </tr>
+    </table>
+    <script src="./guest_book.js"></script>
+  </body>
+</html>
