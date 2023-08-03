@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let str1 = true;
+      let str2 = 123;
+      let str3 = null;
+
+      console.log(typeof str1, typeof String(str1)); // boolean string
+      console.log(typeof str2, typeof String(str2)); // number string
+      console.log(typeof str3, typeof String(str3)); // object string
+      console.log(str1.toString(), typeof str1.toString());
+
+      let n1 = true;
+      let n2 = false;
+      let n3 = '123.9';
+
+      console.log(Number(n1), typeof Number(n1)); // true -> 1
+      console.log(Number(n2), typeof Number(n2)); // false -> 0
+      console.log(Number(n3), typeof Number(n3)); // 123.9
+
+      console.log(!true);
+      console.log(!false);
+      console.log(!!true);
+      console.log(!!false);
+
+      let result1, result2;
+      let num = 10,
+        num2 = 10;
+      result2 = ++num2;
+      console.log(result2); // 11
+      console.log(num2); // 11
+
+      let sum2 = 0; // 합을 의미하는 변수
+      // - 1~ 20까지 숫자를 반복
+      // - 현재 반복 숫자가 짝수라면 sum2 에 더하기
+      for (let i = 0; i < 100; i++) {
+        // console.log(i);
+
+        if (i % 2 === 0) {
+          sum2 = sum2 + i;
+          console.log(sum2);
+        }
+      }
+
+      const me = { name: 'sage', gender: 'f', hobby: 'book' };
+      for (let key in me) {
+        console.log(key, me[key]);
+        // key: key
+        // value: me[key]
+      }
+    </script>
+  </head>
+  <body>
+    <h1>blog</h1>
+  </body>
+</html>
