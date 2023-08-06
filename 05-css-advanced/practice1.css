@@ -1,0 +1,22 @@
+div {
+  background-color: black;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+body {
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  body {
+    flex-direction: column;
+  }
+
+  div {
+    background-color: skyblue;
+  }
+}
