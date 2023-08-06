@@ -1,0 +1,41 @@
+.header {
+  background-color: tomato;
+  height: 120px;
+}
+
+.main {
+  display: flex;
+}
+
+.section {
+  width: 80%;
+  background-color: bisque;
+}
+
+.aside {
+  width: 20%;
+  background-color: aquamarine;
+}
+
+.footer {
+  background-color: cornflowerblue;
+}
+
+@media (max-width: 480px) {
+  /* viewport width가 480px 이하일 때 */
+  .header {
+    height: 60px;
+  } /* 헤더 높이 120px -> 60px */
+
+  .main {
+    flex-direction: column;
+  } /* 메인 가로 배열 -> 세로 배열 */
+
+  .aside {
+    width: 100%;
+  }
+
+  .section {
+    width: 100%;
+  } /* 세로 배열에 맞추어 가로 크기 100% */
+}
