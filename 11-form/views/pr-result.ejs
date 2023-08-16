@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>폼 전송 결과</title>
+
+    <style>
+      span {
+        color: blue;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><%= title %> 폼 결과 확인하기</h1>
+    <div><span><%= userInfo.name %></span>님 환영합니다!</div>
+    <div>성별은 <span><%= userInfo.gender %></span>이군요!</div>
+    <% if (userInfo.hobby !== undefined && userInfo.hobby !== '') { %>
+    <div>
+      생년월일:
+      <span
+        ><%= userInfo.year %>/<%= userInfo.month %>/<%= userInfo.day %></span
+      >
+    </div>
+    <% } %> <% if (userInfo.hobby !== undefined && userInfo.hobby !== '') { %>
+    <div>관심사: <span><%= userInfo.hobby %></span></div>
+    <% } %> <% if (userInfo.color !== undefined && userInfo.color !== '#000000')
+    { %>
+    <div>
+      좋아하는 색상:
+      <%=userInfo.color%>
+    <div>좋아하는 숫자: <span><%= userInfo.number %></span></div>
+    <% } %>
+  </body>
+</html>
