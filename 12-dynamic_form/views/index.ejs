@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dynamic form: practice</title>
+    <!-- jquery cdn -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- axios cdn -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Get 회원가입</h1>
+    <form name="userInfo">
+      <label for="name">name</label>
+      <input type="text" name="name" id="name" />
+      <br />
+      <fieldset>
+        <legend>Sex</legend>
+        <label for="female">female</label>
+        <input type="radio" name="gender" id="female" value="female" checked />
+        <label for="female">male</label>
+        <input type="radio" name="gender" id="male" value="male" />
+      </fieldset>
+      <fieldset>
+        <legend>Birth</legend>
+        <select name="year" id="year">
+          <% for (let i=1980; i<2023; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <select name="month" id="month">
+          <% for (let i=1; i<13; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <select name="date" id="date">
+          <% for (let i=1; i<32; i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+      </fieldset>
+      <fieldset>
+        <legend>hobby</legend>
+        <input
+          type="checkbox"
+          name="hobby"
+          id="travel"
+          value="travel"
+          checked
+        />
+        <label for="travel">travel</label>
+        <input type="checkbox" name="hobby" id="movie" value="movie" />
+        <label for="movie">movie</label>
+        <input type="checkbox" name="hobby" id="book" value="book" />
+        <label for="book">book</label>
+      </fieldset>
+      <br />
+      <button type="button" onclick="register()">register</button>
+    </form>
+    <div class="result"></div>
+  </body>
+  <script>
+    const result = document.querySelector('.result');
+    const form = document.forms['userInfo'];
+    const data = {
+      name: form.name.value,
+      gender: form.gender.value,
+    };
+
+    async function register() {
+      console.log('register');
+      try {
+        const res = await axios({
+          method: 'get',
+          url: '/register',
+          params: data,
+        });
+        const { name } = res.data;
+        result.innerHTML = 'Hi, ${name}! Welcome!';
+      } catch (error) {
+        result.innerHTML = 'Error!';
+      }
+    }
+  </script>
+</html>
