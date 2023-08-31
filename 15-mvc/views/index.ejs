@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVC실습</title>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      div.success {
+        color: blue;
+      }
+      div.fail {
+        color: red;
+      }
+      div.error {
+        color: violet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>로그인 실습</h1>
+    <form action="/login" name="login" method="post">
+      <span>아이디 </span>
+      <input type="text" name="id" /><br />
+      <span>비밀번호</span>
+      <input type="password" name="pw" />
+      <button type="button" onclick="clickLogin()">로그인</button>
+    </form>
+    <div class="res"></div>
+  </body>
+  <script>
+    const res = document.querySelector('.res');
+    async function clickLogin() {
+      const form = document.forms['login'];
+      const user = {
+        id: form.id.value,
+        pw: form.pw.value,
+      };
+      console.log(user);
+      try {
+        const response = await axios({
+          method: 'post',
+          url: '/login',
+          data: user,
+        });
+        const { id, pw } = response.data;
+        console.log(id, pw);
+        if (id == 'sage' && pw == '1234') {
+          res.innerHTML = `<div class="success">${id}님! 로그인에 성공하셨습니다!</div>`;
+        } else {
+          res.innerHTML = `<div class="fail">로그인에 실패하셨습니다!</div>`;
+        }
+      } catch (error) {
+        res.innerHTML = `<div class="error">에러 발생</div>`;
+      }
+    }
+  </script>
+</html>
