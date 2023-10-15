@@ -52,3 +52,53 @@ function solution(arr3) {
 
 let arr3 = [1, 2, 3, -3, -2, 5, 6, -6];
 console.log(solution(arr3));
+
+// 3. 삽입정렬
+function solution(arr4) {
+  let answer = arr4;
+  for (let i = 0; i < arr4.length; i++) {
+    let tmp = arr4[i],
+      j;
+    for (j = i - 1; j >= 0; j--) {
+      if (arr4[j] > tmp) arr4[j + 1] = arr4[j];
+      else break; // arr4[j]가 tmp보다 크면 break
+    }
+    arr4[j + 1] = tmp;
+  }
+  return answer;
+}
+
+let arr4 = [11, 7, 5, 6, 10, 9];
+console.log(solution(arr4));
+
+// 3-1. 삽입정렬 (LRU)
+function solution(size, arr) {
+  let answer = Array.from({ length: size }, () => 0);
+  // length: size만큼 배열 초기화
+  arr.forEach(x => {
+    let pos = -1;
+
+    // 현재 원소가 결과 배열에 이미 존재하는지 확인
+    for (let i = 0; i < size; i++) if (x === answer[i]) pos = i;
+    // 현재 원소가 존재하면 위치를 저장
+
+    if (pos === -1) {
+      // miss
+      for (let i = size - 1; i >= 1; i--) {
+        answer[i] = answer[i - 1];
+      }
+    } else {
+      // hit (pos=i)
+      for (let i = pos; i >= 1; i--) {
+        // hit난 지점부터 땡기기
+        answer[i] = answer[i - 1];
+      }
+    }
+    answer[0] = x;
+  });
+
+  return answer;
+}
+
+let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+console.log(solution(5, arr));
